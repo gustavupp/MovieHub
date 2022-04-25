@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MovieHub.Models
 {
-    public class MovieGenre
+    public class MovieGenres
     {
         public byte Id { get; set; }
 

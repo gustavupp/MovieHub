@@ -193,12 +193,16 @@
     <Compile Include="Migrations\202204250146526_AplicationUserRequired.designer.cs">
       <DependentUpon>202204250146526_AplicationUserRequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204250355240_PopulateGenresTable.cs" />
+    <Compile Include="Migrations\202204250355240_PopulateGenresTable.designer.cs">
+      <DependentUpon>202204250355240_PopulateGenresTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\MovieGenre.cs" />
+    <Compile Include="Models\MovieGenres.cs" />
     <Compile Include="Models\UpcomingMovie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -288,6 +292,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204250146526_AplicationUserRequired.resx">
       <DependentUpon>202204250146526_AplicationUserRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204250355240_PopulateGenresTable.resx">
+      <DependentUpon>202204250355240_PopulateGenresTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,7 +10,7 @@ namespace MovieHub.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<UpcomingMovie> UpcomingMovies { get; set; }
-        public DbSet<MovieGenre> MovieGenres { get; set; }
+        public DbSet<MovieGenres> MovieGenres { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

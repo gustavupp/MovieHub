@@ -19,6 +19,6 @@ namespace MovieHub.Models
         public string Director { get; set; }
 
         [Required]
-        public MovieGenre MovieGenre { get; set; }
+        public MovieGenres MovieGenre { get; set; }
     }
 }

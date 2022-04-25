@@ -9,11 +9,11 @@ namespace MovieHub.ViewModels
     public class UpcomingMovieViewModel
     {
         public int Id { get; set; }
-        public ApplicationUser Movie { get; set; }
+        public string MovieName { get; set; }
         public string ReleaseDate { get; set; }
         public int RunningTime { get; set; }
         public string Director { get; set; }
-        public MovieGenres MovieGenre { get; set; }
+        public int MovieGenre { get; set; }
         public IEnumerable<MovieGenres> MovieGenres { get; set; }
     }
 }

@@ -7,8 +7,13 @@ namespace MovieHub.Models
     {
         public int Id { get; set; }
 
+        public ApplicationUser AppUser { get; set; }
+
         [Required]
-        public ApplicationUser Movie { get; set; }
+        public string AppUserId { get; set; }
+
+        [Required]
+        public string MovieName { get; set; }
 
         public DateTime ReleaseDate { get; set; }
 
@@ -18,7 +23,9 @@ namespace MovieHub.Models
         [StringLength(255)]
         public string Director { get; set; }
 
-        [Required]
         public MovieGenres MovieGenre { get; set; }
+
+        [Required]
+        public byte MovieGenreId { get; set; }
     }
 }

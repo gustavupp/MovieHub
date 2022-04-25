@@ -7,10 +7,11 @@
 
 <h2>Add a Upcoming Movie</h2>
 
-<form>
+@using (Html.BeginForm("Create", "UpcomingMovies"))
+{
     <div class="form-group">
-        @Html.LabelFor(m => m.Movie)
-        @Html.TextBoxFor(m => m.Movie, new { @class = "form-control" })
+        @Html.LabelFor(m => m.MovieName)
+        @Html.TextBoxFor(m => m.MovieName, new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Director)
@@ -18,7 +19,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ReleaseDate)
-        @Html.TextBoxFor(m => m.ReleaseDate, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.ReleaseDate, new { @class = "form-control", type = "date" })
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.RunningTime)
@@ -26,7 +27,8 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.MovieGenre)
-        @Html.DropDownListFor(m => m.MovieGenres, new SelectList(Model.MovieGenres, "Id", "Name"),"-- Select Genre --" ,new {@class="form-control"})
+        @Html.DropDownListFor(m => m.MovieGenre, new SelectList(Model.MovieGenres, "Id", "Name"), "-- Select Genre --", new { @class = "form-control" })
     </div>
     <button type="submit" class="btn btn-success">Save</button>
-</form>
+}
+

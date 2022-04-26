@@ -31,6 +31,7 @@ namespace MovieHub.Controllers
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(UpcomingMovieViewModel upcomingMovie)
         {
             if (!ModelState.IsValid)

@@ -28,17 +28,24 @@ namespace MovieHub.Controllers
             return View(viewModel);
         }
 
+
         [Authorize]
         [HttpPost]
         public ActionResult Create(UpcomingMovieViewModel upcomingMovie)
         {
+            if (!ModelState.IsValid)
+            {
+                upcomingMovie.MovieGenres = _context.MovieGenres.ToList();
+                return View("Create", upcomingMovie);
+            }
+
             var newUpcomingMovie = new UpcomingMovie()
             {
                 AppUserId = User.Identity.GetUserId(),
                 MovieName = upcomingMovie.MovieName,
                 Director = upcomingMovie.Director,
                 MovieGenreId = upcomingMovie.MovieGenreId,
-                ReleaseDate = DateTime.Parse(upcomingMovie.ReleaseDate),
+                ReleaseDate = upcomingMovie.ReleaseDate,
                 RunningTime = upcomingMovie.RunningTime,
             };
 

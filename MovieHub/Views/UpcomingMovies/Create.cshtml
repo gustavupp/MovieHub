@@ -12,22 +12,27 @@
     <div class="form-group">
         @Html.LabelFor(m => m.MovieName)
         @Html.TextBoxFor(m => m.MovieName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MovieName)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Director)
         @Html.TextBoxFor(m => m.Director, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Director)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ReleaseDate)
         @Html.TextBoxFor(m => m.ReleaseDate, new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(m => m.ReleaseDate)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.RunningTime)
         @Html.TextBoxFor(m => m.RunningTime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.RunningTime)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.MovieGenreId)
         @Html.DropDownListFor(m => m.MovieGenreId, new SelectList(Model.MovieGenres, "Id", "Name"), "-- Select Genre --", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.MovieGenreId)
     </div>
     <button type="submit" class="btn btn-success">Save</button>
 }

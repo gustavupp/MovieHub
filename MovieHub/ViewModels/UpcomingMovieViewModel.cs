@@ -13,7 +13,7 @@ namespace MovieHub.ViewModels
         public string ReleaseDate { get; set; }
         public int RunningTime { get; set; }
         public string Director { get; set; }
-        public int MovieGenre { get; set; }
+        public byte MovieGenreId { get; set; }
         public IEnumerable<MovieGenres> MovieGenres { get; set; }
     }
 }

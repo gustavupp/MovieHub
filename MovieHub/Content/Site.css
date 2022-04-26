@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: "Montserrat";
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,81 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+/*CSS Overrides*/
+
+.navbar-inverse {
+    background-color: #2C73D2;
+    border-color: transparent;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #fff;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #245dab;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #2C73D2;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    border-radius: 7px;
+}
+
+.form-control:focus {
+    border-color: #2C73D2;
+    box-shadow: none;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: white;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+.innerDropDownDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: #151616;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 5px 15px;
+}
+
+a:hover, a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color:#2C73D2;
 }

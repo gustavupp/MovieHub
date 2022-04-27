@@ -31,7 +31,42 @@ span.field-validation-error {
 }
 
 
-/*CSS Overrides*/
+.wrapper {
+    display:flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.date {
+    position: relative;
+    text-align: center;
+    margin-right: 15px;
+    border-radius: 10px;
+    width: 70px;
+    color: white;
+    font-weight: 700;
+    border: 1px solid #808080;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    overflow-y: hidden;
+}
+
+.month {
+    position: absolute;
+    background-color: red;
+    width: 100%;
+    padding: 2px 0;
+}
+
+.day {
+    position: absolute;
+    color: black;
+    top: 24px;
+    left: 30px;
+    font-size: 20px;
+}
+
+/*******************CSS Overrides***************************/
 .navbar-inverse {
     background-color: #2C73D2;
     border-color: transparent;

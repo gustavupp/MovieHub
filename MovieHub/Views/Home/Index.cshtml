@@ -6,10 +6,28 @@
 
 <main>
     <br/>
-    <ul>
         @foreach (var movie in Model)
         {
-            <li>Release Date: @movie.ReleaseDate | Name: @movie.MovieName | Director: @movie.Director </li>
+        <div class="wrapper">
+            <div class="date">
+                <div class="month">
+                    @movie.ReleaseDate.ToString("MMMM")
+                </div>
+                <div class="day">
+                    @movie.ReleaseDate.ToString("d ")
+                </div>
+            </div>
+            <div class="movie-details">
+                <div class="movie-name">
+                    @movie.MovieName
+                </div>
+                <div class="movie-name">
+                    @movie.Director
+                </div>
+                <div class="movie-name">
+                    @movie.RunningTime
+                </div>
+            </div>
+        </div>
         }
-    </ul>
 </main>

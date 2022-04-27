@@ -9,10 +9,11 @@
 
 @using (Html.BeginForm("Create", "UpcomingMovies"))
 {
+    <p class="alert alert-info">All fields are <strong>required</strong></p>
     @Html.AntiForgeryToken()
     <div class="form-group">
         @Html.LabelFor(m => m.MovieName)
-        @Html.TextBoxFor(m => m.MovieName, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.MovieName, new { @class = "form-control", autofocus = "autofocus" })
         @Html.ValidationMessageFor(m => m.MovieName)
     </div>
     <div class="form-group">

@@ -11,6 +11,8 @@ namespace MovieHub.Models
     {
         public DbSet<UpcomingMovie> UpcomingMovies { get; set; }
         public DbSet<MovieGenres> MovieGenres { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -19,6 +21,17 @@ namespace MovieHub.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        //overriding onModelCreating to use FluentAPI
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Attendance>()
+                .HasRequired(a => a.UpcomingMovie)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

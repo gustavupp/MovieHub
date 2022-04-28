@@ -51,6 +51,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
@@ -206,10 +209,15 @@
     <Compile Include="Migrations\202204251336309_AddForeignKeyPropertiesToUpcomingMoviesAgain.designer.cs">
       <DependentUpon>202204251336309_AddForeignKeyPropertiesToUpcomingMoviesAgain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204281101392_createAttendance.cs" />
+    <Compile Include="Migrations\202204281101392_createAttendance.designer.cs">
+      <DependentUpon>202204281101392_createAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MovieGenres.cs" />
     <Compile Include="Models\UpcomingMovie.cs" />
@@ -312,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204251336309_AddForeignKeyPropertiesToUpcomingMoviesAgain.resx">
       <DependentUpon>202204251336309_AddForeignKeyPropertiesToUpcomingMoviesAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204281101392_createAttendance.resx">
+      <DependentUpon>202204281101392_createAttendance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -23,14 +23,14 @@
                 </div>
                 <div class="movie-info-and-btn-container">
                     <div>
-                        <div class="movie-name">
+                        <div class="movie-director">
                             @movie.Director
                         </div>
-                        <div class="movie-name">
+                        <div class="movie-runningTime">
                             @movie.RunningTime
                         </div>
                     </div>
-                    <button data-upcomingMovieId=@movie.Id class="js-toggle-attendance btn btn-sm btn-default">Going?</button>
+                    <button data-upcomingMovieId=@movie.Id class="js-toggle-attendance btn btn-sm btn-default">Are you going?</button>
                 </div>
             </div>
 
@@ -50,7 +50,8 @@
                     .done(function () {
                         button.removeClass('btn-default');
                         button.addClass('btn-primary');
-                        button.text = 'Going';
+                        button.text = "I'm going";
+
                     }).fail(function () { alert("something failed!") });
             });
         })

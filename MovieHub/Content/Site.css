@@ -33,9 +33,7 @@ span.field-validation-error {
 
 .wrapper {
     display:flex;
-    flex-direction: row;
     margin-bottom: 20px;
-    min-width: 150px;
 }
 
 .date {
@@ -71,10 +69,11 @@ span.field-validation-error {
 
 .movie-info-and-btn-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
+.movie-director {
+    margin-right: 15px;
+}
 /*******************CSS Overrides***************************/
 .navbar-inverse {
     background-color: #2C73D2;

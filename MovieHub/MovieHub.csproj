@@ -186,10 +186,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
+    <Compile Include="Controllers\FollowingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UpcomingMoviesController.cs" />
     <Compile Include="Dtos\AttendanceDto.cs" />
+    <Compile Include="Dtos\FollowingDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,11 +231,16 @@
     <Compile Include="Migrations\202204290404042_addNamePropToApplicationUser.designer.cs">
       <DependentUpon>202204290404042_addNamePropToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204291219132_createdFollowingModel.cs" />
+    <Compile Include="Migrations\202204291219132_createdFollowingModel.designer.cs">
+      <DependentUpon>202204291219132_createdFollowingModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Attendance.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MovieGenres.cs" />
     <Compile Include="Models\UpcomingMovie.cs" />
@@ -301,6 +308,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Following\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -342,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204290404042_addNamePropToApplicationUser.resx">
       <DependentUpon>202204290404042_addNamePropToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204291219132_createdFollowingModel.resx">
+      <DependentUpon>202204291219132_createdFollowingModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

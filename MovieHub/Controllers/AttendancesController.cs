@@ -15,7 +15,7 @@ namespace MovieHub.Controllers
     public class AttendancesController : ApiController
     {
 
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public AttendancesController()
         {
@@ -47,10 +47,5 @@ namespace MovieHub.Controllers
             return Ok("Attendence included");
         }
 
-        [HttpGet]
-        public IHttpActionResult test()
-        {
-            return Ok("all good");
-        }
     }
 }

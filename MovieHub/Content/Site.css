@@ -43,12 +43,14 @@ span.field-validation-error {
     margin-right: 15px;
     border-radius: 10px;
     width: 70px;
+    height: 70px;
     color: white;
     font-weight: 700;
-    border: 1px solid #808080;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     overflow-y: hidden;
+    box-shadow: 1px 1px 2px grey;
+    background-color: #f7f7f7;
 }
 
 .month {
@@ -64,6 +66,12 @@ span.field-validation-error {
     top: 24px;
     left: 30px;
     font-size: 20px;
+}
+
+.movie-info-and-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 /*******************CSS Overrides***************************/

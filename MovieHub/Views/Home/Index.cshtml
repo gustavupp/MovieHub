@@ -30,10 +30,29 @@
                             @movie.RunningTime
                         </div>
                     </div>
-                    <button class="btn btn-sm btn-default">Going?</button>
+                    <button data-upcomingMovieId=@movie.Id class="js-toggle-attendance btn btn-sm btn-default">Going?</button>
                 </div>
             </div>
 
         </div>
         }
 </main>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('.js-toggle-attendance').on('click', function (e) {
+
+                let button = $(e.target);
+
+                $.post("/api/attendances", { upcomingMovieId : button.attr('data-upcomingMovieId')})
+                    .done(function () {
+                        button.removeClass('btn-default');
+                        button.addClass('btn-primary');
+                        button.text = 'Going';
+                    }).fail(function () { alert("something failed!") });
+            });
+        })
+    </script>
+}

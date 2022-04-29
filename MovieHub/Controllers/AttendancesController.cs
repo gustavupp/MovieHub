@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using MovieHub.Dtos;
 using MovieHub.Models;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.Http;
 
 namespace MovieHub.Controllers
 {
+
     [Authorize]
     public class AttendancesController : ApiController
     {
@@ -22,10 +24,12 @@ namespace MovieHub.Controllers
 
 
         [HttpPost]
-        public IHttpActionResult Attend([FromBody]int upcomingMovieId)
+        public IHttpActionResult Attend(AttendanceDto attendanceDto)
         {
             var userId = User.Identity.GetUserId();
-            var exists = _context.Attendances.Any(a => a.UpcomingMovieId == upcomingMovieId && a.AttendeeId == userId);
+
+            var exists = _context.Attendances
+                .Any(a => a.UpcomingMovieId == attendanceDto.UpcomingMovieId && a.AttendeeId == userId);
 
             if (exists)
                 return BadRequest("Attendance alaredy exists.");
@@ -33,7 +37,7 @@ namespace MovieHub.Controllers
 
             var attendance = new Attendance()
             {
-                UpcomingMovieId = upcomingMovieId,
+                UpcomingMovieId = attendanceDto.UpcomingMovieId,
                 AttendeeId = userId,
             };
 

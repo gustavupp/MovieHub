@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MovieHub.Models.UpcomingMovie>
+﻿@model  MovieHub.ViewModels.HomeViewModel
 
 @{
     ViewBag.Title = "Home Page";
@@ -6,7 +6,7 @@
 
 <main>
     <br/>
-        @foreach (var movie in Model)
+        @foreach (var movie in Model.UpcomingMovies)
         {
         <div class="wrapper">
             <div class="date">
@@ -30,10 +30,14 @@
                             @movie.RunningTime
                         </div>
                     </div>
-                    <div class="btns-container">
-                        <button data-userId=@movie.AppUserId class="js-toggle-following btn-link">Follow User</button>
-                        <button data-upcomingMovieId=@movie.Id class="js-toggle-attendance btn btn-sm btn-default">Are you going?</button>
-                    </div>
+
+                    @if (Model.ShowActions)
+                    {
+                        <div class="btns-container">
+                            <button data-userId=@movie.AppUserId class="js-toggle-following btn-link">Follow User</button>
+                            <button data-upcomingMovieId=@movie.Id class="js-toggle-attendance btn btn-sm btn-default">Are you going?</button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

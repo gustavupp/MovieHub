@@ -5,6 +5,7 @@ using System.Linq;
 using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
+using MovieHub.ViewModels;
 
 namespace MovieHub.Controllers
 {
@@ -18,8 +19,20 @@ namespace MovieHub.Controllers
         }
         public ActionResult Index()
         {
-            var upcomingMoviesList = _context.UpcomingMovies.Include(m => m.AppUser).Where(m => m.ReleaseDate > DateTime.Now).ToList();
-            return View(upcomingMoviesList);
+            var upcomingMoviesList = _context.UpcomingMovies
+                .Include(m => m.AppUser)
+                .Where(m => m.ReleaseDate > DateTime.Now)
+                .ToList();
+
+            var showActions = User.Identity.IsAuthenticated;
+
+            var homeViewModel = new HomeViewModel()
+            {
+                UpcomingMovies = upcomingMoviesList,
+                ShowActions = showActions,
+            };
+
+            return View(homeViewModel);
         }
 
     }

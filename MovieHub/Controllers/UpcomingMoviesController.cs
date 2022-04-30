@@ -2,6 +2,7 @@
 using MovieHub.Models;
 using MovieHub.ViewModels;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -53,7 +54,28 @@ namespace MovieHub.Controllers
             _context.UpcomingMovies.Add(newUpcomingMovie);
             _context.SaveChanges();
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
+
+        [Authorize]
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+            var upcomingMovies = _context.Attendances
+                .Where(a => a.AttendeeId == userId)
+                .Select(um => um.UpcomingMovie)
+                .Include(um => um.AppUser)
+                .Include(um => um.MovieGenre)
+                .ToList();
+
+            var viewModel = new HomeViewModel()
+            {
+                UpcomingMovies = upcomingMovies,
+                ShowActions = User.Identity.IsAuthenticated
+            };
+
+            return View(viewModel);
+        }
+
     }
 }

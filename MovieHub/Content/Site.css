@@ -34,6 +34,7 @@ span.field-validation-error {
 .wrapper {
     display:flex;
     margin-bottom: 20px;
+    width: 500px;
 }
 
 .date {
@@ -73,6 +74,11 @@ span.field-validation-error {
 
 .movie-director {
     margin-right: 15px;
+}
+
+.btns-container {
+    display: flex;
+    flex-direction: column;
 }
 /*******************CSS Overrides***************************/
 .navbar-inverse {

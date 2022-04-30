@@ -24,16 +24,18 @@
                 <div class="movie-info-and-btn-container">
                     <div>
                         <div class="movie-director">
-                            @movie.Director
+                            @movie.AppUser.Name
                         </div>
                         <div class="movie-runningTime">
                             @movie.RunningTime
                         </div>
                     </div>
-                    <button data-upcomingMovieId=@movie.Id class="js-toggle-attendance btn btn-sm btn-default">Are you going?</button>
+                    <div class="btns-container">
+                        <button data-userId=@movie.AppUserId class="js-toggle-following btn-link">Follow User</button>
+                        <button data-upcomingMovieId=@movie.Id class="js-toggle-attendance btn btn-sm btn-default">Are you going?</button>
+                    </div>
                 </div>
             </div>
-
         </div>
         }
 </main>
@@ -42,18 +44,27 @@
 {
     <script>
         $(document).ready(function () {
-            $('.js-toggle-attendance').on('click', function (e) {
 
+            $('.js-toggle-attendance').on('click', function (e) {
                 let button = $(e.target);
 
                 $.post("/api/attendances", { upcomingMovieId : button.attr('data-upcomingMovieId')})
                     .done(function () {
                         button.removeClass('btn-default');
                         button.addClass('btn-primary');
-                        button.text = "I'm going";
+                        button.text("I'm going");
 
                     }).fail(function () { alert("something failed!") });
             });
+
+            $('.js-toggle-following').on('click', function (e) {
+                let button = $(e.target);
+
+                $.post("/api/following", { FolloweeId: button.attr('data-userId') })
+                    .done(function () {
+                        button.text("Following");
+                    }).fail(function () {alert("Something faild!")})
+            })
         })
     </script>
 }

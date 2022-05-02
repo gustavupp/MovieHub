@@ -9,6 +9,7 @@ namespace MovieHub.ViewModels
     {
        public IEnumerable<Models.UpcomingMovie> UpcomingMovies { get; set; }
        public bool ShowActions { get; set; }
+        public string PageHeading { get; set; }
 
     }
 }

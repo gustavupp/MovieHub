@@ -1,10 +1,12 @@
 ﻿@model  MovieHub.ViewModels.HomeViewModel
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = Model.PageHeading;
 }
 
 <main>
+    <h2>@Model.PageHeading</h2>
+
     <br/>
         @foreach (var movie in Model.UpcomingMovies)
         {

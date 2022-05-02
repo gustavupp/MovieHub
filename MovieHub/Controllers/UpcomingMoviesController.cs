@@ -71,10 +71,11 @@ namespace MovieHub.Controllers
             var viewModel = new HomeViewModel()
             {
                 UpcomingMovies = upcomingMovies,
-                ShowActions = User.Identity.IsAuthenticated
+                ShowActions = User.Identity.IsAuthenticated,
+                PageHeading = "Movies I'm Attending",
             };
 
-            return View(viewModel);
+            return View("UpcomingMovies", viewModel);
         }
 
     }

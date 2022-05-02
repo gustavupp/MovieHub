@@ -26,15 +26,14 @@ namespace MovieHub.Controllers
                 .Include(m => m.AppUser)
                 .ToList();
 
-            var showActions = User.Identity.IsAuthenticated;
-
             var homeViewModel = new HomeViewModel()
             {
                 UpcomingMovies = upcomingMoviesList,
-                ShowActions = showActions,
+                ShowActions = User.Identity.IsAuthenticated,
+                PageHeading = "All Upcoming Movies",
             };
 
-            return View(homeViewModel);
+            return View("UpcomingMovies" ,homeViewModel);
         }
 
     }

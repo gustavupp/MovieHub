@@ -29,5 +29,7 @@ namespace MovieHub.ViewModels
         public byte MovieGenreId { get; set; }
 
         public IEnumerable<MovieGenres> MovieGenres { get; set; }
+
+
     }
 }

@@ -32,7 +32,7 @@ namespace MovieHub.Controllers
                 .Any(a => a.UpcomingMovieId == attendanceDto.UpcomingMovieId && a.AttendeeId == userId);
 
             if (exists)
-                return BadRequest("Attendance alaredy exists.");
+                return BadRequest("Already attending this Movie.");
 
 
             var attendance = new Attendance()

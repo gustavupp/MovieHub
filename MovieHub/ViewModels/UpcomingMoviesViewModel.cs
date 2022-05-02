@@ -5,11 +5,13 @@ using System.Web;
 
 namespace MovieHub.ViewModels
 {
-    public class HomeViewModel
+    public class UpcomingMoviesViewModel
     {
        public IEnumerable<Models.UpcomingMovie> UpcomingMovies { get; set; }
        public bool ShowActions { get; set; }
-        public string PageHeading { get; set; }
+       public string PageHeading { get; set; }
+
+       public List<int> MoviesIdIamGoing { get; set; }
 
     }
 }

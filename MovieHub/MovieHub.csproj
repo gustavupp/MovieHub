@@ -248,7 +248,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\FutureDate.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
-    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\UpcomingMoviesViewModel.cs" />
     <Compile Include="ViewModels\UpcomingMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

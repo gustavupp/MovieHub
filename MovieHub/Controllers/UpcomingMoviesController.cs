@@ -57,6 +57,7 @@ namespace MovieHub.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
         [Authorize]
         public ActionResult Attending()
         {
@@ -68,11 +69,15 @@ namespace MovieHub.Controllers
                 .Include(um => um.MovieGenre)
                 .ToList();
 
-            var viewModel = new HomeViewModel()
+            var viewModel = new UpcomingMoviesViewModel()
             {
                 UpcomingMovies = upcomingMovies,
                 ShowActions = User.Identity.IsAuthenticated,
                 PageHeading = "Movies I'm Attending",
+                MoviesIdIamGoing = _context.Attendances
+                .Where(e => e.AttendeeId == userId)
+                .Select(e => e.UpcomingMovieId)
+                .ToList(),
             };
 
             return View("UpcomingMovies", viewModel);

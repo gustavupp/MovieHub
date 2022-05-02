@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using MovieHub.ViewModels;
+using Microsoft.AspNet.Identity;
 
 namespace MovieHub.Controllers
 {
@@ -26,11 +27,17 @@ namespace MovieHub.Controllers
                 .Include(m => m.AppUser)
                 .ToList();
 
-            var homeViewModel = new HomeViewModel()
+            var userId = User.Identity.GetUserId();
+
+            var homeViewModel = new UpcomingMoviesViewModel()
             {
                 UpcomingMovies = upcomingMoviesList,
                 ShowActions = User.Identity.IsAuthenticated,
                 PageHeading = "All Upcoming Movies",
+                MoviesIdIamGoing = _context.Attendances
+                .Where(e => e.AttendeeId == userId)
+                .Select(e => e.UpcomingMovieId)
+                .ToList(),
             };
 
             return View("UpcomingMovies" ,homeViewModel);

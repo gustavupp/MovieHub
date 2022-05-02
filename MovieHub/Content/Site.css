@@ -30,15 +30,17 @@ span.field-validation-error {
     font-weight: 600;
 }
 
+.outer-wrapper {
+    margin-bottom: 25px;
+}
 
-.wrapper {
+.date-info-wrapper {
     display:flex;
-    margin-bottom: 20px;
-    width: 500px;
+    justify-content: flex-start;
+    max-width: 400px;
 }
 
 .date {
-    position: relative;
     text-align: center;
     margin-right: 15px;
     border-radius: 10px;
@@ -54,17 +56,19 @@ span.field-validation-error {
 }
 
 .month {
-    position: absolute;
+    display:flex;
+    justify-content: center;
+    align-items:center;
     background-color: red;
     width: 100%;
     padding: 2px 0;
 }
 
 .day {
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: black;
-    top: 24px;
-    left: 30px;
     font-size: 20px;
 }
 
@@ -74,6 +78,12 @@ span.field-validation-error {
 
 .movie-userName {
     margin-right: 15px;
+}
+
+.movie-name{
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
 }
 
 .btns-container {

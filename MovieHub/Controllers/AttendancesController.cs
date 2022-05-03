@@ -32,9 +32,16 @@ namespace MovieHub.Controllers
                 .Any(a => a.UpcomingMovieId == attendanceDto.UpcomingMovieId && a.AttendeeId == userId);
 
             if (exists)
-                return BadRequest("Already attending this Movie.");
+            {
+                Attendance attendanceToRemove = _context.Attendances
+                    .FirstOrDefault(a => a.UpcomingMovieId == attendanceDto.UpcomingMovieId && a.AttendeeId == userId);
 
+                _context.Attendances.Remove(attendanceToRemove);
+                _context.SaveChanges();
 
+                return Ok();
+            }
+                
             var attendance = new Attendance()
             {
                 UpcomingMovieId = attendanceDto.UpcomingMovieId,

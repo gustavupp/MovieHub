@@ -62,6 +62,7 @@ namespace MovieHub.Controllers
         public ActionResult Attending()
         {
             var userId = User.Identity.GetUserId();
+
             var upcomingMovies = _context.Attendances
                 .Where(a => a.AttendeeId == userId)
                 .Select(um => um.UpcomingMovie)

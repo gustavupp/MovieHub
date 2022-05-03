@@ -74,31 +74,35 @@
 {
     <script>
         $(document).ready(function () {
-            
+
             $('.js-toggle-attendance').on('click', function (e) {
-                let button = $(e.target);
-                
-
-                $.post("/api/attendances", { upcomingMovieId : button.attr('data-upcomingMovieId')})
-                    .done(function () {
-                        button.removeClass('btn-default');
-                        button.addClass('btn-primary');
-                        button.text("I'm going");
-                    }).fail(function () { alert("something failed!") });
-            });
-
-            $('.js-toggle-following').on('click', function (e) {
                 let button = $(e.target);
                 let btn = e.target;
 
-                $.post("/api/following", { FolloweeId: button.attr('data-userId') })
+                $.post("/api/attendances", { upcomingMovieId: button.attr('data-upcomingMovieId') })
                     .done(function () {
 
-                        if (btn.textContent == 'Following') btn.textContent = 'Follow User';
-                        else btn.textContent = "Following";
+                        if (btn.textContent == 'Are you going?') {
+                            btn.textContent = 'Going';
+                            btn.classList.remove('btn-default');
+                            btn.classList.add('btn-primary');
 
-                    }).fail(function () {alert("Something faild!")})
-            })
-        })
+                        } else {
+                            btn.textContent = 'Are you going?';
+                            btn.classList.remove('btn-primary');
+                            btn.classList.add('btn-default');
+                        }
+
+                    }).fail(function (m) { alert(m.responseText) });
+            });
+
+            $('.js-toggle-following').on('click', function (e) {
+                let btn = e.target;
+
+                $.post("/api/following", { FolloweeId: btn.dataset.userid })
+                    .done(() => btn.textContent = btn.textContent == 'Following' ? 'Follow User' : 'Following')
+                    .fail(m => alert(m.responseText));
+            });
+        });
     </script>
 }

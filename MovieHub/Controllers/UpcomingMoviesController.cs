@@ -69,15 +69,20 @@ namespace MovieHub.Controllers
                 .Include(um => um.MovieGenre)
                 .ToList();
 
+            var moviesIdIamGoing = _context.Attendances
+                .Where(e => e.AttendeeId == userId)
+                .Select(e => e.UpcomingMovieId)
+                .ToList();
+
+            var followers = _context.Followings.Where(f => f.FollowerId == userId).Select(f => f.FolloweeId).ToList();
+
             var viewModel = new UpcomingMoviesViewModel()
             {
                 UpcomingMovies = upcomingMovies,
                 ShowActions = User.Identity.IsAuthenticated,
                 PageHeading = "Movies I'm Attending",
-                MoviesIdIamGoing = _context.Attendances
-                .Where(e => e.AttendeeId == userId)
-                .Select(e => e.UpcomingMovieId)
-                .ToList(),
+                MoviesIdIamGoing = moviesIdIamGoing,
+                MyFollowers = followers,
             };
 
             return View("UpcomingMovies", viewModel);

@@ -28,19 +28,23 @@ namespace MovieHub.Controllers
                 .ToList();
 
             var userId = User.Identity.GetUserId();
+            var moviesIdIamGoing = _context.Attendances
+                .Where(e => e.AttendeeId == userId)
+                .Select(e => e.UpcomingMovieId)
+                .ToList();
+
+            var followers = _context.Followings.Where(f => f.FollowerId == userId).Select(f => f.FolloweeId).ToList();
 
             var homeViewModel = new UpcomingMoviesViewModel()
             {
                 UpcomingMovies = upcomingMoviesList,
                 ShowActions = User.Identity.IsAuthenticated,
                 PageHeading = "All Upcoming Movies",
-                MoviesIdIamGoing = _context.Attendances
-                .Where(e => e.AttendeeId == userId)
-                .Select(e => e.UpcomingMovieId)
-                .ToList(),
+                MoviesIdIamGoing = moviesIdIamGoing,
+                MyFollowers = followers,
             };
 
-            return View("UpcomingMovies" ,homeViewModel);
+            return View("UpcomingMovies", homeViewModel);
         }
 
     }

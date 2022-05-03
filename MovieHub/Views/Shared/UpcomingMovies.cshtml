@@ -41,7 +41,15 @@
                         @if (Model.ShowActions)
                         {
                     <div class="btns-container">
-                        <button data-userId=@movie.AppUserId class="js-toggle-following btn-link">Follow User</button>
+
+                        @if (Model.MyFollowers.Contains(movie.AppUserId))
+                        {
+                            <button data-userId=@movie.AppUserId class="js-toggle-following btn-link">Following</button>
+                        }
+                        else
+                        {
+                            <button data-userId=@movie.AppUserId class="js-toggle-following btn-link">Follow User</button>
+                        }
 
                         @if (Model.MoviesIdIamGoing.Contains(movie.Id))
                         {

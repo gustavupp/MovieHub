@@ -25,21 +25,32 @@ namespace MovieHub.Controllers
         {
             var userId = User.Identity.GetUserId();
 
-            if (_context.Followings.Any(f => f.FollowerId == userId && f.FolloweeId == followeeDto.FolloweeId) || followeeDto.FolloweeId == userId)
+            if (followeeDto.FolloweeId == userId)
+                return BadRequest("You cannot follow yourself");
+
+            if (_context.Followings.Any(f => f.FollowerId == userId && f.FolloweeId == followeeDto.FolloweeId))
             {
-                return BadRequest("Following already exists.");
-            };
+                var unfollow = _context.Followings
+                    .FirstOrDefault(f => f.FollowerId == userId && f.FolloweeId == followeeDto.FolloweeId);
+                
+                _context.Followings.Remove(unfollow);
+                _context.SaveChanges();
 
-            var following = new Following()
+                return Ok();
+            }
+            else
             {
-                FollowerId = userId,
-                FolloweeId = followeeDto.FolloweeId
-            };
+                var following = new Following()
+                {
+                    FollowerId = userId,
+                    FolloweeId = followeeDto.FolloweeId
+                };
 
-            _context.Followings.Add(following);
-            _context.SaveChanges();
+                _context.Followings.Add(following);
+                _context.SaveChanges();
 
-            return Ok();
+                return Ok();
+            }
         }
     }
 }

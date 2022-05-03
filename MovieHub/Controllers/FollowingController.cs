@@ -25,8 +25,10 @@ namespace MovieHub.Controllers
         {
             var userId = User.Identity.GetUserId();
 
-            if (_context.Followings.Any(f => f.FollowerId == userId && f.FolloweeId == followeeDto.FolloweeId))
+            if (_context.Followings.Any(f => f.FollowerId == userId && f.FolloweeId == followeeDto.FolloweeId) || followeeDto.FolloweeId == userId)
+            {
                 return BadRequest("Following already exists.");
+            };
 
             var following = new Following()
             {

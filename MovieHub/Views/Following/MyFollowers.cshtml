@@ -1,0 +1,15 @@
+﻿
+@model IEnumerable<MovieHub.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "MyFollowers";
+}
+
+<h2>MyFollowers</h2>
+
+<ul>
+    @foreach (var user in Model)
+    {
+        <li>@user.Name | @user.Email</li>
+    }
+</ul>

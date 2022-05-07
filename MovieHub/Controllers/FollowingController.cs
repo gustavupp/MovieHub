@@ -1,56 +1,31 @@
 ﻿using Microsoft.AspNet.Identity;
-using MovieHub.Dtos;
 using MovieHub.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+using System.Web;
+using System.Web.Mvc;
 
 namespace MovieHub.Controllers
 {
-    [Authorize]
-    public class FollowingController : ApiController
+    public class FollowingController : Controller
     {
-        private readonly ApplicationDbContext _context;
+
+        private ApplicationDbContext _context { get; set; }
 
         public FollowingController()
         {
             _context = new ApplicationDbContext();
         }
 
-        [HttpPost]
-        public IHttpActionResult Follow(FollowingDto followeeDto)
+        [Authorize]
+        [HttpGet]
+        public ActionResult MyFollowers()
         {
             var userId = User.Identity.GetUserId();
+            var myFollowers = _context.Followings.Where(f => f.FollowerId == userId).Select(f => f.Followee).ToList();
 
-            if (followeeDto.FolloweeId == userId)
-                return BadRequest("You cannot follow yourself");
-
-            if (_context.Followings.Any(f => f.FollowerId == userId && f.FolloweeId == followeeDto.FolloweeId))
-            {
-                var unfollow = _context.Followings
-                    .FirstOrDefault(f => f.FollowerId == userId && f.FolloweeId == followeeDto.FolloweeId);
-                
-                _context.Followings.Remove(unfollow);
-                _context.SaveChanges();
-
-                return Ok();
-            }
-            else
-            {
-                var following = new Following()
-                {
-                    FollowerId = userId,
-                    FolloweeId = followeeDto.FolloweeId
-                };
-
-                _context.Followings.Add(following);
-                _context.SaveChanges();
-
-                return Ok();
-            }
+            return View(myFollowers);
         }
     }
 }

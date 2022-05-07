@@ -99,7 +99,7 @@
             $('.js-toggle-following').on('click', function (e) {
                 let btn = e.target;
 
-                $.post("/api/following", { FolloweeId: btn.dataset.userid })
+                $.post("/api/followingApi", { FolloweeId: btn.dataset.userid })
                     .done(() => btn.textContent = btn.textContent == 'Following' ? 'Follow User' : 'Following')
                     .fail(m => alert(m.responseText));
             });

@@ -89,5 +89,16 @@ namespace MovieHub.Controllers
             return View("UpcomingMovies", viewModel);
         }
 
+        public ActionResult MyUpcomingMovies()
+        {
+            var userId = User.Identity.GetUserId();
+            var myUpcomingGigs = _context.UpcomingMovies
+                .Where(um => um.AppUserId == userId && um.ReleaseDate > DateTime.Now)
+                .Include(g => g.MovieGenre)
+                .ToList();
+
+            return View(myUpcomingGigs);
+        }
+
     }
 }

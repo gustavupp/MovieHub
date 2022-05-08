@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<MovieHub.Models.UpcomingMovie>
+
+@{
+    ViewBag.Title = "My Upcoming Movies";
+}
+
+<h2>MyUpcomingGigs</h2>
+
+<main>
+
+    @foreach (var movie in Model)
+    {
+        <div class="outer-wrapper">
+           
+            <div class="date-info-wrapper">
+                <div class="date">
+                    <div class="month">
+                        @movie.ReleaseDate.ToString("MMM").ToUpper()
+                    </div>
+                    <div class="day">
+                        @movie.ReleaseDate.ToString("d ")
+                    </div>
+                </div>
+                <div class="movie-details">
+
+                    <div class="movie-info-and-btn-container">
+                        <div>
+                            <div class="movie-name">
+                                @movie.MovieName
+                            </div>
+                            <div class="movie-genre">
+                                @movie.MovieGenre.Name
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+</main>

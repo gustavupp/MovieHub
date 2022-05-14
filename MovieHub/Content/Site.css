@@ -37,7 +37,7 @@ span.field-validation-error {
     .date-info-wrapper {
         display: flex;
         justify-content: flex-start;
-        max-width: 400px;
+        align-items:center;
     }
 
 .date {
@@ -89,6 +89,12 @@ span.field-validation-error {
 .btns-container {
     display: flex;
     flex-direction: column;
+}
+
+.edit-my-upcomingMovies-btn{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
 }
 
 .edit-my-upcomingMovies-btn a {

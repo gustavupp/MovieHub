@@ -7,8 +7,9 @@ namespace MovieHub.Models
     {
         public int Id { get; set; }
 
-        //navigation property
-        public ApplicationUser AppUser { get; set; }
+        //foreignKey property
+        [Required]
+        public byte MovieGenreId { get; set; }
 
         //foreignKey property
         [Required]
@@ -25,11 +26,14 @@ namespace MovieHub.Models
         [StringLength(255)]
         public string Director { get; set; }
 
+        public bool isCanceled { get; set; }
+
         //navigation property
         public MovieGenres MovieGenre { get; set; }
 
-        //foreignKey property
-        [Required]
-        public byte MovieGenreId { get; set; }
+        //navigation property
+        public ApplicationUser AppUser { get; set; }
+
+       
     }
 }

@@ -30,6 +30,13 @@ namespace MovieHub.ViewModels
 
         public IEnumerable<MovieGenres> MovieGenres { get; set; }
 
+        public string  Heading { get; set; }
+
+        public string Action 
+        {
+            get { return (Id != 0) ? "Update" : "Create";  }
+        }
+
 
     }
 }

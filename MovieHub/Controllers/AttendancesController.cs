@@ -34,7 +34,9 @@ namespace MovieHub.Controllers
             if (exists)
             {
                 Attendance attendanceToRemove = _context.Attendances
-                    .FirstOrDefault(a => a.UpcomingMovieId == attendanceDto.UpcomingMovieId && a.AttendeeId == userId);
+                    .FirstOrDefault(a => 
+                    a.UpcomingMovieId == attendanceDto.UpcomingMovieId &&
+                    a.AttendeeId == userId);
 
                 _context.Attendances.Remove(attendanceToRemove);
                 _context.SaveChanges();

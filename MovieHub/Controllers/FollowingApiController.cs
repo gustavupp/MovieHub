@@ -28,10 +28,14 @@ namespace MovieHub.Controllers
             if (followeeDto.FolloweeId == userId)
                 return BadRequest("You cannot follow yourself");
 
-            if (_context.Followings.Any(f => f.FollowerId == userId && f.FolloweeId == followeeDto.FolloweeId))
+            if (_context.Followings.Any(f => 
+            f.FollowerId == userId &&
+            f.FolloweeId == followeeDto.FolloweeId))
             {
                 var unfollow = _context.Followings
-                    .FirstOrDefault(f => f.FollowerId == userId && f.FolloweeId == followeeDto.FolloweeId);
+                    .FirstOrDefault(f => 
+                    f.FollowerId == userId &&
+                    f.FolloweeId == followeeDto.FolloweeId);
                 
                 _context.Followings.Remove(unfollow);
                 _context.SaveChanges();

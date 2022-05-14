@@ -5,14 +5,14 @@
     ViewBag.Title = "My Upcoming Movies";
 }
 
-<h2>MyUpcomingGigs</h2>
-
+<h2>My Upcoming Movies</h2>
+<br/>
 <main>
 
     @foreach (var movie in Model)
     {
         <div class="outer-wrapper">
-           
+
             <div class="date-info-wrapper">
                 <div class="date">
                     <div class="month">
@@ -26,11 +26,14 @@
 
                     <div class="movie-info-and-btn-container">
                         <div>
-                            <div class="movie-name">
+                            <p class="movie-name">
                                 @movie.MovieName
-                            </div>
-                            <div class="movie-genre">
+                            </p>
+                            <p class="movie-genre">
                                 @movie.MovieGenre.Name
+                            </p>
+                            <div class="edit-my-upcomingMovies-btn">
+                                <a href="@Url.Action("Edit","UpcomingMovies", new {id = movie.Id})" class="btn btn-link">Edit</a>
                             </div>
                         </div>
                     </div>

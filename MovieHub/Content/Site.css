@@ -34,11 +34,11 @@ span.field-validation-error {
     margin-bottom: 25px;
 }
 
-.date-info-wrapper {
-    display:flex;
-    justify-content: flex-start;
-    max-width: 400px;
-}
+    .date-info-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        max-width: 400px;
+    }
 
 .date {
     text-align: center;
@@ -90,11 +90,19 @@ span.field-validation-error {
     display: flex;
     flex-direction: column;
 }
-/*******************CSS Overrides***************************/
-.navbar-inverse {
-    background-color: #2C73D2;
-    border-color: transparent;
+
+.edit-my-upcomingMovies-btn a {
+    visibility: hidden;
 }
+
+.movie-info-and-btn-container:hover .edit-my-upcomingMovies-btn a {
+    visibility: visible;
+}
+    /*******************CSS Overrides***************************/
+    .navbar-inverse {
+        background-color: #2C73D2;
+        border-color: transparent;
+    }
 
 .navbar-inverse .navbar-brand {
     color: #fff;

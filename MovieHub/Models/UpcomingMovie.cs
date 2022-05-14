@@ -26,7 +26,7 @@ namespace MovieHub.Models
         [StringLength(255)]
         public string Director { get; set; }
 
-        public bool isCanceled { get; set; }
+        public bool IsCanceled { get; set; }
 
         //navigation property
         public MovieGenres MovieGenre { get; set; }

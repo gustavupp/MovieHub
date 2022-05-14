@@ -12,7 +12,7 @@ namespace MovieHub.apis
 
     public class UpcomingMoviesApiController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public UpcomingMoviesApiController()
         {
@@ -26,7 +26,7 @@ namespace MovieHub.apis
             var toBeCanceled = _context.UpcomingMovies
                 .Single(um => um.Id == id && um.AppUserId == userId);
 
-            toBeCanceled.isCanceled = true;
+            toBeCanceled.IsCanceled = true;
 
             _context.SaveChanges();
 

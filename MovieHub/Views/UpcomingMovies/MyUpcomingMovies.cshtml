@@ -30,7 +30,7 @@
                             <p class="movie-genre"> @movie.MovieGenre.Name </p>
                             <div class="edit-my-upcomingMovies-btn">
                                 <a href="@Url.Action("Edit","UpcomingMovies", new {id = movie.Id})" class="btn btn-link">Edit</a>
-                                <a href="#" class="btn btn-link js-cancel-upcoming-movie" data-movieId="@movie.Id">Cancel</a>
+                                <a href="#" class="btn btn-link js-cancel-upcoming-movie" data-movieid="@movie.Id">Cancel</a>
                             </div>
                         </div>
                     </div>
@@ -52,9 +52,12 @@
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 if (confirm('Are you sure you want to cancel this Movie?')) {
-                    fetch(`https://localhost:44341/api/UpcomingMoviesApi/CancelUpcomingMovie/${btn.dataset.movieId}`, { method: 'DELETE' })
-                        .then(res => res.json())
-                        .then(data => console.log(data))
+                    fetch(`/api/UpcomingMoviesApi/${btn.dataset.movieid}`, { method: 'DELETE' })
+                        .then(res => {
+                            console.log(res);
+                            document.querySelector
+                            btn.style.opacity = 0;
+                        })
                         .catch(err => console.log(err));
                 }
             })

@@ -22,7 +22,7 @@ namespace MovieHub.Controllers
         {
             var upcomingMoviesList = _context.UpcomingMovies
                 .Include(m => m.AppUser)
-                .Where(m => m.ReleaseDate > DateTime.Now)
+                .Where(m => m.ReleaseDate > DateTime.Now && !m.IsCanceled)
                 .Include(m => m.MovieGenre)
                 .Include(m => m.AppUser)
                 .ToList();

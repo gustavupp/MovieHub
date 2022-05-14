@@ -147,7 +147,9 @@ namespace MovieHub.Controllers
         {
             var userId = User.Identity.GetUserId();
             var myUpcomingGigs = _context.UpcomingMovies
-                .Where(um => um.AppUserId == userId && um.ReleaseDate > DateTime.Now)
+                .Where(um => um.AppUserId == userId &&
+                um.ReleaseDate > DateTime.Now &&
+                !um.IsCanceled)
                 .Include(g => g.MovieGenre)
                 .ToList();
 

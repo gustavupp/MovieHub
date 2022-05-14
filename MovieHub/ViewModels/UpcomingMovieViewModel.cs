@@ -1,9 +1,12 @@
-﻿using MovieHub.Models;
+﻿using MovieHub.Controllers;
+using MovieHub.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MovieHub.ViewModels
 {
@@ -34,7 +37,18 @@ namespace MovieHub.ViewModels
 
         public string Action 
         {
-            get { return (Id != 0) ? "Update" : "Create";  }
+            get 
+            {
+                //simpler way of doing, but using 'magic strings'
+                //return (Id != 0) ? "Update" : "Create";  
+
+                //using lambdas you don't have to worry about the method name changing
+                Expression<Func<UpcomingMoviesController, ActionResult>> update = c => c.Update(this);
+                Expression<Func<UpcomingMoviesController, ActionResult>> create = c => c.Create(this);
+
+                var action = (Id != 0) ? update : create;
+                return (action.Body as MethodCallExpression).Method.Name;
+            }
         }
 
 

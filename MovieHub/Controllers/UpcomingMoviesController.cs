@@ -40,6 +40,7 @@ namespace MovieHub.Controllers
 
             var viewModel = new UpcomingMovieViewModel()
             {
+                Id = upcomingMovie.Id,
                 MovieGenres = _context.MovieGenres.ToList(),
                 MovieName = upcomingMovie.MovieName,
                 Director   = upcomingMovie.Director,
@@ -47,7 +48,7 @@ namespace MovieHub.Controllers
                 ReleaseDate = upcomingMovie.ReleaseDate,   
                 RunningTime = upcomingMovie.RunningTime,
                 Heading = "Edit Upcoming Movie",
-                Id = upcomingMovie.Id
+                
             };
 
             return View("Create",viewModel);

@@ -55,8 +55,10 @@
                     fetch(`/api/UpcomingMoviesApi/${btn.dataset.movieid}`, { method: 'DELETE' })
                         .then(res => {
                             console.log(res);
-                            document.querySelector
-                            btn.style.opacity = 0;
+                            let parentContainer = btn.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+                            parentContainer.style.opacity = 0;
+                            parentContainer.style.transition = '0.5s';
+                            parentContainer.remove();
                         })
                         .catch(err => console.log(err));
                 }

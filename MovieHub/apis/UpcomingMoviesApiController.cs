@@ -23,10 +23,35 @@ namespace MovieHub.apis
         public IHttpActionResult CancelUpcomingMovie(int id)
         {
             var userId = User.Identity.GetUserId();
-            var toBeCanceled = _context.UpcomingMovies
+            var upcomingMovie = _context.UpcomingMovies
                 .Single(um => um.Id == id && um.AppUserId == userId);
 
-            toBeCanceled.IsCanceled = true;
+            upcomingMovie.IsCanceled = true;
+
+            var notification = new Notification()
+            {
+                DateTime = DateTime.Now,
+                NotificationType = NotificationType.UpcomingMovieCanceled,
+                UpcomingMovie = upcomingMovie,
+            };
+
+            var usersAttendingMovie = _context.Attendances
+                .Where(a => a.UpcomingMovieId == upcomingMovie.Id)
+                .Select(a => a.Attendee)
+                .ToList();
+
+            foreach(var user in usersAttendingMovie)
+            {
+                var userNotification = new UserNotification()
+                {
+                   Notification = notification,
+                   //UserId = user.Id,
+                   //NotificationId = notification.Id,
+                   User = user,
+                };
+
+                _context.UserNotifications.Add(userNotification);
+            }
 
             _context.SaveChanges();
 

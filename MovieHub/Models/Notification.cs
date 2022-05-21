@@ -8,10 +8,10 @@ namespace MovieHub.Models
 {
     public class Notification
     {
-        public int Id { get; private set; }
+        public int Id { get; set; }
 
-        public DateTime DateTime { get; private set; }
-        public NotificationType NotificationType { get; private set; }
+        public DateTime DateTime { get; set; }
+        public NotificationType NotificationType { get; set; }
         public DateTime? OriginalDateTime { get; set; }
         public string OriginalVenue { get; set; }
 

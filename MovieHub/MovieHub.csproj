@@ -178,7 +178,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="apis\UpcomingMoviesApiController.cs" />
+    <Compile Include="Apis\UpcomingMoviesApiController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -187,7 +187,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
-    <Compile Include="apis\FollowingApiController.cs" />
+    <Compile Include="Apis\FollowingApiController.cs" />
     <Compile Include="Controllers\FollowingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -240,6 +240,10 @@
     <Compile Include="Migrations\202205140932461_addedIscanceldProperty.cs" />
     <Compile Include="Migrations\202205140932461_addedIscanceldProperty.designer.cs">
       <DependentUpon>202205140932461_addedIscanceldProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205210210330_NotificationAndUserNotificationClassesCreated.cs" />
+    <Compile Include="Migrations\202205210210330_NotificationAndUserNotificationClassesCreated.designer.cs">
+      <DependentUpon>202205210210330_NotificationAndUserNotificationClassesCreated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -368,6 +372,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205140932461_addedIscanceldProperty.resx">
       <DependentUpon>202205140932461_addedIscanceldProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205210210330_NotificationAndUserNotificationClassesCreated.resx">
+      <DependentUpon>202205210210330_NotificationAndUserNotificationClassesCreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

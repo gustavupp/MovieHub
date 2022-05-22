@@ -28,12 +28,7 @@ namespace MovieHub.apis
 
             upcomingMovie.IsCanceled = true;
 
-            var notification = new Notification()
-            {
-                DateTime = DateTime.Now,
-                NotificationType = NotificationType.UpcomingMovieCanceled,
-                UpcomingMovie = upcomingMovie,
-            };
+            var notification = new Notification(upcomingMovie, NotificationType.UpcomingMovieCanceled);
 
             var usersAttendingMovie = _context.Attendances
                 .Where(a => a.UpcomingMovieId == upcomingMovie.Id)

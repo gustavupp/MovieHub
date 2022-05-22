@@ -42,15 +42,7 @@ namespace MovieHub.apis
 
             foreach(var user in usersAttendingMovie)
             {
-                var userNotification = new UserNotification()
-                {
-                   Notification = notification,
-                   //UserId = user.Id,
-                   //NotificationId = notification.Id,
-                   User = user,
-                };
-
-                _context.UserNotifications.Add(userNotification);
+                user.Notify(notification);
             }
 
             _context.SaveChanges();

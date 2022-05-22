@@ -22,5 +22,20 @@ namespace MovieHub.Models
 
         public bool IsRead { get; set; }
 
+        public UserNotification()
+        {
+        }
+        public UserNotification(Notification notification, ApplicationUser user)
+        {
+            if (notification == null)
+                throw new ArgumentNullException("Notification");
+
+            if(user == null)
+                throw new ArgumentNullException("user");
+
+            User = user;
+            Notification = notification;
+        }
+
     }
 }

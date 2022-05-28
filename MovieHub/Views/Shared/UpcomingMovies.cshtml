@@ -7,9 +7,9 @@
 <main>
     <h2>@Model.PageHeading</h2>
 
-    <br/>
-        @foreach (var movie in Model.UpcomingMovies)
-        {
+    <br />
+    @foreach (var movie in Model.UpcomingMovies)
+    {
         <div class="outer-wrapper">
             <div class="movie-name">
                 @movie.MovieName
@@ -36,34 +36,36 @@
                         </div>
                         @if (Model.ShowActions)
                         {
-                    <div class="btns-container">
+                            <div class="btns-container">
 
-                        @if (Model.MyFollowers.Contains(movie.AppUserId))
-                        {
-                            <button data-userId=@movie.AppUserId class="js-toggle-following btn-link">Following</button>
-                        }
-                        else
-                        {
-                            <button data-userId=@movie.AppUserId class="js-toggle-following btn-link">Follow User</button>
-                        }
+                                @if (Model.MyFollowers.Contains(movie.AppUserId))
+                                {
+                                    <button data-userId=@movie.AppUserId class="js-toggle-following btn-link">Following</button>
+                                }
+                                else
+                                {
+                                    <button data-userId=@movie.AppUserId class="js-toggle-following btn-link">Follow User</button>
+                                }
 
-                        @if (Model.MoviesIdIamGoing.Contains(movie.Id))
-                        {
-                            <button data-upcomingMovieId=@movie.Id class="going js-toggle-attendance btn btn-sm btn-primary">Going</button>
-                        }
-                        else
-                        {
-                            <button data-upcomingMovieId=@movie.Id class="js-toggle-attendance btn btn-sm btn-default">Are you going?</button>
+                                @if (Model.MoviesIdIamGoing.Contains(movie.Id))
+                                {
+                                    <button data-upcomingMovieId=@movie.Id class="going js-toggle-attendance btn btn-sm btn-primary">Going</button>
+                                }
+                                else
+                                {
+                                    <button data-upcomingMovieId=@movie.Id class="js-toggle-attendance btn btn-sm btn-default">Are you going?</button>
 
-                        }
-                    </div>
+                                }
+                            </div>
                         }
                     </div>
                 </div>
             </div>
-   
+
         </div>
-        }
+    }
+    <button onclick="getNotifications()">GetNotifications()</button>
+
 </main>
 
 @section scripts
@@ -99,5 +101,11 @@
                     .fail(m => alert(m.responseText));
             });
         });
+
+        function getNotifications() {
+            fetch('/api/Notifications')
+                .then(res => res.json())
+                .then(data => console.log(data));
+        } 
     </script>
 }

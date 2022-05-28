@@ -7,6 +7,7 @@ using System.Net;
 using System.Data.Entity;
 using System.Net.Http;
 using System.Web.Http;
+using MovieHub.Dtos;
 
 namespace MovieHub.Apis
 {
@@ -27,7 +28,34 @@ namespace MovieHub.Apis
                 .Include(n => n.UpcomingMovie.AppUser)
                 .ToList();
 
-            return notifications;
+            //FIX THIS
+            return notifications.Select(n => new NotificationDto()
+            {
+                DateTime = n.DateTime,
+                Id = n.Id,
+                ModificationDate = n.ModificationDate,
+                NotificationType = n.NotificationType,
+                UpcomingMovie = new UpcomingMovieDto 
+                {
+                    MovieName = n.UpcomingMovie.MovieName,
+                    MovieGenre = new MovieGenresDto
+                    {
+                        Id = n.UpcomingMovie.MovieGenre.Id,
+                        Name = n.UpcomingMovie.MovieGenre.Name,
+                    },
+                    Director = n.UpcomingMovie.Director,
+                    Id = n.UpcomingMovie.Id,
+                    IsCanceled = n.UpcomingMovie.IsCanceled,
+                    ReleaseDate = n.UpcomingMovie.ReleaseDate,
+                    RunningTime = n.UpcomingMovie.RunningTime,
+                    AppUser = new UserDto
+                    {
+                        Id = n.UpcomingMovie.AppUser.Id,
+                        Name = n.UpcomingMovie.AppUser.Name
+                    }
+                },
+
+            });
         }
     }
 }

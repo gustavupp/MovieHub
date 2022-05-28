@@ -195,6 +195,10 @@
     <Compile Include="Controllers\UpcomingMoviesController.cs" />
     <Compile Include="Dtos\AttendanceDto.cs" />
     <Compile Include="Dtos\FollowingDto.cs" />
+    <Compile Include="Dtos\MovieGenresDto.cs" />
+    <Compile Include="Dtos\NotificationDto.cs" />
+    <Compile Include="Dtos\UpcomingMovieDto.cs" />
+    <Compile Include="Dtos\UserDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

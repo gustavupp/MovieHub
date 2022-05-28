@@ -245,6 +245,10 @@
     <Compile Include="Migrations\202205210210330_NotificationAndUserNotificationClassesCreated.designer.cs">
       <DependentUpon>202205210210330_NotificationAndUserNotificationClassesCreated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205280319575_changesColumnsUserNotificationsTable.cs" />
+    <Compile Include="Migrations\202205280319575_changesColumnsUserNotificationsTable.designer.cs">
+      <DependentUpon>202205280319575_changesColumnsUserNotificationsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -375,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205210210330_NotificationAndUserNotificationClassesCreated.resx">
       <DependentUpon>202205210210330_NotificationAndUserNotificationClassesCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205280319575_changesColumnsUserNotificationsTable.resx">
+      <DependentUpon>202205280319575_changesColumnsUserNotificationsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

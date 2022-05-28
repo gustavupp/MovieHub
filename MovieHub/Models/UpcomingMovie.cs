@@ -41,7 +41,7 @@ namespace MovieHub.Models
         {
             IsCanceled = true;
 
-            var notification = new Notification(this, NotificationType.UpcomingMovieCanceled);
+            var notification = Notification.UpcomingMovieCanceled(this);
 
             foreach (var user in Attendances.Select(a => a.Attendee))
             {
@@ -49,12 +49,9 @@ namespace MovieHub.Models
             }
         }
 
-        public void Update(DateTime modificationDateTime, DateTime newDateTime)
+        public void Update(DateTime originalDateTime, DateTime newDateTime)
         {
-            var notification = new Notification(this,NotificationType.UpcomingMovieUpdated);
-
-            notification.ModificationDate = modificationDateTime;
-            notification.DateTime = newDateTime;
+            var notification = Notification.UpcomingMovieUpdated(this, newDateTime, originalDateTime);
 
             foreach(var user in Attendances.Select(a => a.Attendee))
             {

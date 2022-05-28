@@ -108,7 +108,7 @@ namespace MovieHub.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("MyUpcomingMovies");
+            return RedirectToAction(nameof(MyUpcomingMovies));
         }
 
         [Authorize]

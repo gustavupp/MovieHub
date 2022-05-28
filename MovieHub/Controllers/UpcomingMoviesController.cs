@@ -104,7 +104,7 @@ namespace MovieHub.Controllers
             updatingMovieGig.RunningTime = upcomingMovieViewModel.RunningTime;
             updatingMovieGig.MovieGenreId = upcomingMovieViewModel.MovieGenreId;
 
-            updatingMovieGig.Update();
+            updatingMovieGig.Update(DateTime.Now, upcomingMovieViewModel.ReleaseDate);
 
             _context.SaveChanges();
 

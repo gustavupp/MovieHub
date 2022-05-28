@@ -49,9 +49,12 @@ namespace MovieHub.Models
             }
         }
 
-        public void Update()
+        public void Update(DateTime modificationDateTime, DateTime newDateTime)
         {
             var notification = new Notification(this,NotificationType.UpcomingMovieUpdated);
+
+            notification.ModificationDate = modificationDateTime;
+            notification.DateTime = newDateTime;
 
             foreach(var user in Attendances.Select(a => a.Attendee))
             {

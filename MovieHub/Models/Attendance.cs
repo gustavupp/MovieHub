@@ -9,9 +9,7 @@ namespace MovieHub.Models
 {
     public class Attendance
     {
-        public UpcomingMovie UpcomingMovie { get; set; }
-        public ApplicationUser Attendee { get; set; }
-
+        
         [Key]
         [Column(Order = 1)]
         public int UpcomingMovieId { get; set; }
@@ -19,5 +17,9 @@ namespace MovieHub.Models
         [Key]
         [Column(Order = 2)]
         public string AttendeeId { get; set; }
+
+        //Navigation Properties
+        public UpcomingMovie UpcomingMovie { get; set; }
+        public ApplicationUser Attendee { get; set; }
     }
 }

@@ -40,7 +40,7 @@ namespace MovieHub.Models
         public void Notify(Notification notification)
         {
             var userNotification = new UserNotification(notification,this);
-            this.UserNotifications.Add(userNotification);
+            UserNotifications.Add(userNotification);
         }
 
     }

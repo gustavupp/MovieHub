@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 
 namespace MovieHub.apis
 {
@@ -24,21 +25,13 @@ namespace MovieHub.apis
         {
             var userId = User.Identity.GetUserId();
             var upcomingMovie = _context.UpcomingMovies
+                .Include(um => um.Attendances.Select(a => a.Attendee))
                 .Single(um => um.Id == id && um.AppUserId == userId);
 
-            upcomingMovie.IsCanceled = true;
+            if(upcomingMovie.IsCanceled)
+                return NotFound();
 
-            var notification = new Notification(upcomingMovie, NotificationType.UpcomingMovieCanceled);
-
-            var usersAttendingMovie = _context.Attendances
-                .Where(a => a.UpcomingMovieId == upcomingMovie.Id)
-                .Select(a => a.Attendee)
-                .ToList();
-
-            foreach(var user in usersAttendingMovie)
-            {
-                user.Notify(notification);
-            }
+            upcomingMovie.Cancel();
 
             _context.SaveChanges();
 

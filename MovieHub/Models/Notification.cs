@@ -16,9 +16,9 @@ namespace MovieHub.Models
         public string OriginalVenue { get; set; }
 
         [Required]
-        public UpcomingMovie UpcomingMovie { get; set; }
+        public UpcomingMovie UpcomingMovie { get; private set; }
 
-        public Notification()
+        protected Notification()
         {
         }
 

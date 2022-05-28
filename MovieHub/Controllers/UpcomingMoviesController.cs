@@ -3,7 +3,6 @@ using MovieHub.Models;
 using MovieHub.ViewModels;
 using System;
 using System.Data.Entity;
-using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -85,24 +84,27 @@ namespace MovieHub.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(UpcomingMovieViewModel upcomingMovie)
+        public ActionResult Update(UpcomingMovieViewModel upcomingMovieViewModel)
         {
             if (!ModelState.IsValid)
             {
-                upcomingMovie.MovieGenres = _context.MovieGenres.ToList();
-                return View("Create", upcomingMovie);
+                upcomingMovieViewModel.MovieGenres = _context.MovieGenres.ToList();
+                return View("Create", upcomingMovieViewModel);
             }
 
             var userId = User.Identity.GetUserId();
 
             var updatingMovieGig = _context.UpcomingMovies
-                .Single(um => um.Id == upcomingMovie.Id && um.AppUserId == userId);
+                .Include(um => um.Attendances.Select(a => a.Attendee))
+                .Single(um => um.Id == upcomingMovieViewModel.Id && um.AppUserId == userId);
 
-            updatingMovieGig.MovieName = upcomingMovie.MovieName;
-            updatingMovieGig.Director = upcomingMovie.Director;
-            updatingMovieGig.ReleaseDate = upcomingMovie.ReleaseDate;
-            updatingMovieGig.RunningTime = upcomingMovie.RunningTime;
-            updatingMovieGig.MovieGenreId = upcomingMovie.MovieGenreId;
+            updatingMovieGig.MovieName = upcomingMovieViewModel.MovieName;
+            updatingMovieGig.Director = upcomingMovieViewModel.Director;
+            updatingMovieGig.ReleaseDate = upcomingMovieViewModel.ReleaseDate;
+            updatingMovieGig.RunningTime = upcomingMovieViewModel.RunningTime;
+            updatingMovieGig.MovieGenreId = upcomingMovieViewModel.MovieGenreId;
+
+            updatingMovieGig.Update();
 
             _context.SaveChanges();
 

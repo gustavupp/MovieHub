@@ -22,7 +22,7 @@ namespace MovieHub.Models
 
         public bool IsRead { get; set; }
 
-        public UserNotification()
+        protected UserNotification()
         {
         }
         public UserNotification(Notification notification, ApplicationUser user)

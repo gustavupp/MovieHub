@@ -31,7 +31,7 @@ namespace MovieHub.Models
         {
             modelBuilder.Entity<Attendance>()
                 .HasRequired(a => a.UpcomingMovie)
-                .WithMany()
+                .WithMany(um => um.Attendances)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ApplicationUser>()
@@ -46,7 +46,7 @@ namespace MovieHub.Models
 
             modelBuilder.Entity<UserNotification>()
                 .HasRequired(n => n.User)
-                .WithMany()
+                .WithMany(u => u.UserNotifications)
                 .WillCascadeOnDelete(false);
 
             base.OnModelCreating(modelBuilder);

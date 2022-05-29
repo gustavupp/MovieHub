@@ -19,7 +19,7 @@ namespace MovieHub.Apis
         {
             _context = new ApplicationDbContext();
         }
-        public IEnumerable<Notification> GetNotifications()
+        public IEnumerable<NotificationDto> GetNotifications()
         {
             var userId = User.Identity.GetUserId();
             var notifications = _context.UserNotifications
@@ -28,14 +28,13 @@ namespace MovieHub.Apis
                 .Include(n => n.UpcomingMovie.AppUser)
                 .ToList();
 
-            //FIX THIS
             return notifications.Select(n => new NotificationDto()
             {
                 DateTime = n.DateTime,
                 Id = n.Id,
                 ModificationDate = n.ModificationDate,
                 NotificationType = n.NotificationType,
-                UpcomingMovie = new UpcomingMovieDto 
+                UpcomingMovie = new UpcomingMovieDto
                 {
                     MovieName = n.UpcomingMovie.MovieName,
                     MovieGenre = new MovieGenresDto
@@ -53,8 +52,7 @@ namespace MovieHub.Apis
                         Id = n.UpcomingMovie.AppUser.Id,
                         Name = n.UpcomingMovie.AppUser.Name
                     }
-                },
-
+                }
             });
         }
     }

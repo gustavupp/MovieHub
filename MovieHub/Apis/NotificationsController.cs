@@ -11,6 +11,7 @@ using MovieHub.Dtos;
 
 namespace MovieHub.Apis
 {
+    [Authorize]
     public class NotificationsController : ApiController
     {
         private ApplicationDbContext _context;
@@ -37,16 +38,14 @@ namespace MovieHub.Apis
                 UpcomingMovie = new UpcomingMovieDto
                 {
                     MovieName = n.UpcomingMovie.MovieName,
-                    MovieGenre = new MovieGenresDto
-                    {
-                        Id = n.UpcomingMovie.MovieGenre.Id,
-                        Name = n.UpcomingMovie.MovieGenre.Name,
-                    },
                     Director = n.UpcomingMovie.Director,
                     Id = n.UpcomingMovie.Id,
                     IsCanceled = n.UpcomingMovie.IsCanceled,
                     ReleaseDate = n.UpcomingMovie.ReleaseDate,
                     RunningTime = n.UpcomingMovie.RunningTime,
+                    MovieGenre = new MovieGenresDto {
+                        Id = n.UpcomingMovie.MovieGenreId
+                    },
                     AppUser = new UserDto
                     {
                         Id = n.UpcomingMovie.AppUser.Id,

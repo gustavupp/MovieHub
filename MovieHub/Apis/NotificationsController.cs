@@ -43,8 +43,9 @@ namespace MovieHub.Apis
                     IsCanceled = n.UpcomingMovie.IsCanceled,
                     ReleaseDate = n.UpcomingMovie.ReleaseDate,
                     RunningTime = n.UpcomingMovie.RunningTime,
-                    MovieGenre = new MovieGenresDto {
-                        Id = n.UpcomingMovie.MovieGenreId
+                    MovieGenre = new MovieGenresDto
+                    {
+                        Id = n.UpcomingMovie.MovieGenreId,
                     },
                     AppUser = new UserDto
                     {

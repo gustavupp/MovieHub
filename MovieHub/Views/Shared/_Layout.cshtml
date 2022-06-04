@@ -44,5 +44,18 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            let notificationsBadge = document.querySelector('.notification-count');
+
+            fetch("/api/notifications")
+                .then(res => res.json())
+                .then(data => {
+                    notificationsBadge.textContent = data?.length;
+                })
+                .catch(err => new Error(`There was an error: ${err}`));
+        });
+    </script>
 </body>
 </html>

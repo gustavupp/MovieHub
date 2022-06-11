@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo:wght@300;400;500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -55,6 +55,16 @@
                     notificationsBadge.textContent = data?.length;
                 })
                 .catch(err => new Error(`There was an error: ${err}`));
+
+            $('.notifications').popover({
+                html: true,
+                title: 'notifications',
+                content: function () {
+                    return 'this is the content'
+                },
+                placement: 'bottom',
+                template: '<div class="popover notification-count" role="tooltip">ADPAUdhAUhdPIAUhdPIUAHDS</div>'
+            });
         });
     </script>
 </body>

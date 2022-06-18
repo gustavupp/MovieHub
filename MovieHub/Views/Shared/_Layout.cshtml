@@ -41,6 +41,7 @@
         </footer>
     </div>
 
+    @Scripts.Render("~/bundles/app")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
@@ -49,19 +50,30 @@
         window.addEventListener("DOMContentLoaded", () => {
             let notificationsBadge = document.querySelector('.notification-count');
 
-            fetch("/api/notifications")
-                .then(res => res.json())
-                .then(data => {
-                    notificationsBadge.textContent = data?.length;
-                })
-                .catch(err => new Error(`There was an error: ${err}`));
+            function getData(){
+                let result = '';
+                fetch("/api/notifications")
+                    .then(res => res.json())
+                    .then(res => {
+                        result = res;
+                        notificationsBadge.textContent = res?.length;
+                    })
+                    .catch(err => new Error(`There was an error: ${err}`));
+                return result
+            }
+            
+            function render(obj){
+                if(obj){
+                    return `
+                       -> something here
+                    `
+                }
+            }
 
             $('.notifications').popover({
                 html: true,
                 title: "notifications",
-                content: function () {
-                    return 'this is the content'
-                },
+                content: () => 'this is the content',
                 placement: 'bottom',
                 //template: '<div class="popover notification-count" role="tooltip">ADPAUdhAUhdPIAUhdPIUAHDS</div>'
             });
